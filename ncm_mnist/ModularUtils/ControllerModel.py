@@ -116,7 +116,6 @@ def get_generators(Exp, load_which_models):
             optimizersMech[label] = torch.optim.Adam(label_generators[label].parameters(), lr=Exp.learning_rate,
                                                      betas=Exp.betas, weight_decay=Exp.generator_decay)
 
-
         if label =='W2a':  #Need noise for classifier.
             label_generators[label] = ConditionalClassifier(noise_dim=3, parent_dims=3, output_dim=Exp.label_dim[label]).to(Exp.DEVICE) # image parent.
             momentum = 0.5
