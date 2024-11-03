@@ -18,6 +18,32 @@ class ConditionalEmbedding(nn.Module):
         return emb
 
 
+class JointConditionalEmbedding(nn.Module):
+    """ Embedding for  discretes (jointly) """
+
+    def __init__(self, num_labels_0: int, num_labels_1: int, d_model: int, dim: int):
+        super().__init__()
+        self.cond_embedder_0 = ConditionalEmbedding(num_labels_0, d_model, dim)
+        self.cond_embedder_1 = ConditionalEmbedding(num_labels_1, d_model, dim)
+
+        self.joiner = nn.Sequential(
+            nn.Linear(2 * dim, dim),
+            nn.SiLU(),
+            nn.Linear(dim, dim)
+        )
+
+    def forward(self,  lab_0, lab_1, threshold=0.1, drop_label=False, drop_image=False):
+        lab_emb_0 = self.cond_embedder_0(lab_0)
+        lab_emb_1 = self.cond_embedder_1(lab_1)
+
+        if drop_label:
+            rand_drop = (torch.rand(lab_0.shape[0]) < threshold).to(lab_0.device)
+            lab_emb_0[rand_drop] = 0
+            lab_emb_1[rand_drop] = 0
+
+
+        return self.joiner(torch.cat([lab_emb_0, lab_emb_1], dim=1))
+
 
 class MNISTEmbedding(nn.Module):
     def __init__(self, channels:int, dim:int, hw:int=32):

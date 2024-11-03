@@ -265,7 +265,6 @@ if __name__ == "__main__":
     cur_hnodes = {"H1":["W2a", "W2b", "W1","X", "Y"]}
 
 
-
     Exp.LAMBDA_GP=10
     label_generators, optimizersMech = get_generators(Exp, Exp.load_which_models)
     discriminatorsMech, doptimizersMech = get_discriminators(Exp)  #

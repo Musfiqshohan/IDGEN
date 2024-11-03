@@ -270,5 +270,7 @@ class GaussianDiffusion(nn.Module):
         x_t, eps = self.q_sample(x_0, t)
         pred_eps = self.model(x_t, t, **model_kwargs)
         loss = F.mse_loss(pred_eps, eps, reduction='mean')
+
+
         return loss
     
