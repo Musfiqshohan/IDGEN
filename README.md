@@ -3,7 +3,6 @@
 Slideslive Presentation: 
 https://recorder-v3.slideslive.com/?share=96768&s=09f41687-e6b3-4daa-ab8e-e751bf277f67
 
-Codes will be updated soon.
 
 ### CelebA: Image to Image Translation
 We all have seen these types of Male to Female image translation by generative models which is quite impressive. But have you ever wondered what facial features a model exactly introduce while this translation?
