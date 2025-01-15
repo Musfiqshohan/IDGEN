@@ -24,12 +24,14 @@ Original post: https://x.com/murat_kocaoglu_/status/1865548742297874501
 2. **Causal Questions**: You have a complicated system with several high-dimensional variables, such as image and text data. How can you systematically answer **ANY** causal question from observational data?
 3. **ID Algorithms**: With enough data, we know which causal questions can be answered and which cannot thanks to the ID algorithms of Tian & Pearl and Shpitser & Pearl. But these require the likelihood of complicated high-dimensional distributions, which can't be explicitly learned from data.
 
-![img1.jpeg](assets%img1.jpeg)
+<img src="assets/img1.jpeg" alt="High-Dimensional Causal Graphs" width="600">
 
 4. **Deep Generative Models**: Deep generative models allow us to sample from such conditional distributions, learning them implicitly. Our fundamental question: Can we sample from any identifiable causal query (distribution) just by using conditional generative models?
 5. **Proposed Solution**: Our paper answers this positively. We propose an algorithm that trains a set of conditional generators, tying them together to sample from any causal effect estimand. This unlocks the potential of diffusion models for causal inference.
 6. **Soundness and Completeness**: Our algorithm mimics the steps of the ID algorithm, inheriting its soundness and completeness guarantees for arbitrary causal queries. It can seamlessly sample from conditional interventional queries faster than rejection sampling.
 7. **Quantifying Spurious Correlations**: With our method, we can quantify how spurious correlations in their training data affect large image generative models. For example, we quantify how changing the biological sex of a person affects their perceived age, a non-causal relation that shouldn't be present.
+
+<img src="assets/img2.jpeg" alt="High-Dimensional Causal Graphs" width="600">
 
 ---
 
